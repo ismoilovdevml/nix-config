@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      outputs.nixosModules.gnome
     ];
 
   # Bootloader.
@@ -38,19 +40,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -81,6 +70,13 @@
     packages = with pkgs; [
     #  thunderbird
        telegram-desktop
+       anydesk
+       google-chrome
+       discord
+       vscode
+       obs-studio
+       spotify
+       sublime4
     ];
   };
 
@@ -97,19 +93,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    telegram-desktop
     htop
     git
     zip
     vim
-    anydesk
     nettools
-    google-chrome
-    spotify
-    discord
-    vscode
-    obs-studio
-    sublime4
     traceroute
     unzip
     neofetch
