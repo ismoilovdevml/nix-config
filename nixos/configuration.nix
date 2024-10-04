@@ -1,11 +1,9 @@
-{ inputs, outputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      outputs.nixosModules.gnome
     ];
 
   # Bootloader.
@@ -23,7 +21,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Asia/Tashkent";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -38,6 +36,19 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -61,43 +72,94 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+   
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ismoilovdev = {
     isNormalUser = true;
     description = "Otabek Ismoilov";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
     #  thunderbird
        telegram-desktop
-       anydesk
-       google-chrome
-       discord
-       vscode
-       obs-studio
-       spotify
-       sublime4
     ];
   };
-
 
   # Install firefox.
   programs.firefox.enable = true;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1w"
+    "pulsar-1.117.0"
   ];
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+  programs.zsh = {
+      enable = true;
+      ohMyZsh = {
+        enable = true;
+        plugins = [ "git" "zsh-autosuggestions" "zsh-syntax-highlighting" ];
+        theme = "powerlevel10k/powerlevel10k";
+      };
+    };
 
+  virtualisation.docker.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    powerlevel10k
+    nodejs_22
+    pnpm
+    go
+    cargo
+    rustup
+    ansible
+    terraform
+    rsync
+    sassc
+    telegram-desktop
     htop
     git
+    tree
+    dig
+    glib
+    glibc
+    google-cloud-sdk-gce
+    google-cloud-sdk
+    gnome-extensions-cli
+    gnome-extension-manager
+    gnome.gnome-disk-utility
+    gnome.gnome-tweaks
+    gnome.nautilus
+    gnome.gnome-shell
+    gnome.gnome-terminal
+    gnome.gnome-shell-extensions
+    gnome.geary
+    gnome.gnome-maps
+    gnome.gnome-calendar
+    gnome.gnome-contacts
+    whitesur-gtk-theme
+    whitesur-icon-theme
+    whitesur-cursors
+    ulauncher
     zip
+    rhythmbox
+    shotwell
     vim
+    anydesk
+    pulsar
     nettools
+    google-chrome
+    spotify
+    discord
+    vscode
+    obs-studio
+    sublime4
     traceroute
     unzip
     neofetch
