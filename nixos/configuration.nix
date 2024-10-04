@@ -91,7 +91,6 @@
     "openssl-1.1.1w"
     "pulsar-1.117.0"
   ];
-  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh = {
@@ -112,7 +111,10 @@
     zsh
     zsh-autosuggestions
     zsh-syntax-highlighting
-    powerlevel10k
+    zsh-autocomplete
+    zsh-powerlevel10k
+    neovim
+    helix
     nodejs_22
     pnpm
     go
