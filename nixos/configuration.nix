@@ -85,6 +85,10 @@
     zsh
     neovim
     helix
+    python3
+    python312Packages.pip
+    pipenv
+    pipx
     nfs-utils
     nodejs_22
     pnpm
