@@ -5,6 +5,7 @@
     [
       # Module configurations
       outputs.nixosModules.zsh
+      outputs.nixosModules.nixpkgs
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
