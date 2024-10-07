@@ -32,9 +32,6 @@
           "openssl-1.1.1w"
           "pulsar-1.117.0"
         ];
-        allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-          "google-chrome"
-        ];
       };
     };
 
