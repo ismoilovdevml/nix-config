@@ -27,6 +27,11 @@
       config = {
         # Disable if you don't want unfree packages
         allowUnfree = true;
+        allowUnsupportedSystem = true;
+        permittedInsecurePackages = [
+          "openssl-1.1.1w"
+          "pulsar-1.117.0"
+        ];
       };
     };
   };
