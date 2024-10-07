@@ -67,9 +67,6 @@
 
   security.rtkit.enable = true;
 
-  # Here is the correct placement for the allowUnfree setting
-  nixpkgs.config.allowUnfree = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ismoilovdev = {
     isNormalUser = true;
