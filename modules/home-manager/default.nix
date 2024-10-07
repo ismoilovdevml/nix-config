@@ -3,4 +3,8 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  zsh = import ./zsh;
+  nixpkgs = import ./nixpkgs;
+  packages = import ./packages;
+  topgrade = import ./topgrade;
 }

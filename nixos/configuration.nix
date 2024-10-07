@@ -1,9 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, outputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Module configurations
+      outputs.nixosModules.zsh
+
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Home Manager NixOS Module
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -54,94 +61,43 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;  # Uncomment if needed
+    jack.enable = true; # Uncomment if needed
   };
-  
+
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ismoilovdev = {
     isNormalUser = true;
     description = "Otabek Ismoilov";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-       telegram-desktop
+      telegram-desktop
+      google-chrome
+      spotify
+      discord
+      vscode
+      obs-studio
+      ulauncher
+      sublime4
+      anydesk
     ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      ismoilovdev = import ../home-manager/home.nix;
+    };
   };
 
   # Install firefox.
   sound.enable = true;
   programs.firefox.enable = true;
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.1.1w"
-    "pulsar-1.117.0"
-  ];
 
+  # Docker virtualization
   virtualisation.docker.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    wget
-    zsh
-    neovim
-    helix
-    python3
-    python312Packages.pip
-    pipenv
-    pipx
-    nfs-utils
-    nodejs_22
-    pnpm
-    go
-    cargo
-    rustup
-    ansible
-    terraform
-    rsync
-    sassc
-    telegram-desktop
-    htop
-    git
-    tree
-    dig
-    glib
-    glibc
-    google-cloud-sdk-gce
-    google-cloud-sdk
-    gnome-extensions-cli
-    gnome-extension-manager
-    gnome.gnome-disk-utility
-    gnome.gnome-tweaks
-    gnome.nautilus
-    gnome.gnome-shell
-    gnome.gnome-terminal
-    gnome.gnome-shell-extensions
-    gnome.geary
-    gnome.gnome-maps
-    gnome.gnome-calendar
-    gnome.gnome-contacts
-    whitesur-gtk-theme
-    whitesur-icon-theme
-    whitesur-cursors
-    ulauncher
-    zip
-    rhythmbox
-    shotwell
-    vim
-    anydesk
-    pulsar
-    nettools
-    google-chrome
-    spotify
-    discord
-    vscode
-    obs-studio
-    sublime4
-    traceroute
-    unzip
-    neofetch
-    curl
-  ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

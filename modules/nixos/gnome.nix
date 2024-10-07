@@ -152,13 +152,28 @@ in
       # Gnome Modding
       gnome.dconf-editor
       gnome.gnome-tweaks
+      gnome.gnome-disk-utility
+      gnome.gnome-tweaks
+      gnome.nautilus
+      gnome.gnome-shell
+      gnome.gnome-terminal
+      gnome.gnome-shell-extensions
+      gnome.geary
+      gnome.gnome-maps
+      gnome.gnome-calendar
+      gnome.gnome-contacts
 
       # Gnome Extensions
+      gnome-extensions-cli
+      gnome-extension-manager
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-dock
 
       # Gnome Shell Packs
       papirus-icon-theme
+      whitesur-gtk-theme
+      whitesur-icon-theme
+      whitesur-cursors
     ];
   };
 }
