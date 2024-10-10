@@ -79,6 +79,9 @@
     };
   };
 
+  # Don't ask for password
+  security.sudo.wheelNeedsPassword = false;
+
   # Docker virtualization
   virtualisation.docker.enable = true;
 
