@@ -4,7 +4,8 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   zsh = import ./zsh.nix;
-  gnome = import ./gnome.nix;
   grub = import ./grub.nix;
+  fonts = import ./fonts.nix;
+  gnome = import ./gnome.nix;
   nixpkgs = import ./nixpkgs.nix;
 }

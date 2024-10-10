@@ -7,6 +7,7 @@
       outputs.nixosModules.zsh
       outputs.nixosModules.grub
       outputs.nixosModules.gnome
+      outputs.nixosModules.fonts
       outputs.nixosModules.nixpkgs
 
       # Include the results of the hardware scan.
