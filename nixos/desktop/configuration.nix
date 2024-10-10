@@ -18,7 +18,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "Desktop"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -56,6 +56,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
+  sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
@@ -89,12 +90,11 @@
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
       # Import your home-manager configuration
-      ismoilovdev = import ../home-manager/home.nix;
+      ismoilovdev = import ../../home-manager/home.nix;
     };
   };
 
   # Install firefox.
-  sound.enable = true;
   programs.firefox.enable = true;
 
   # Docker virtualization
