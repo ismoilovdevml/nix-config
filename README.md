@@ -60,7 +60,7 @@
     pulse.enable = true;
     jack.enable = true;  # Uncomment if needed
   };
-  
+
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

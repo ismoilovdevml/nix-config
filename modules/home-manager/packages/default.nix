@@ -17,7 +17,6 @@ let
     nodejs_22
     pnpm
     go
-    cargo
     rustup
     ansible
     terraform
