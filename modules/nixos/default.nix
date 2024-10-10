@@ -5,5 +5,6 @@
   # my-module = import ./my-module.nix;
   zsh = import ./zsh.nix;
   gnome = import ./gnome.nix;
+  grub = import ./grub.nix;
   nixpkgs = import ./nixpkgs.nix;
 }
