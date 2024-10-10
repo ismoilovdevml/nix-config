@@ -29,7 +29,6 @@ let
     glib
     glibc
     google-cloud-sdk-gce
-    google-cloud-sdk
     zip
     rhythmbox
     shotwell
