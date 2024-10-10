@@ -74,9 +74,21 @@ in
             [org.gnome.mutter]
             edge-tiling=true
 
+            # Set the theme
+            [org.gnome.shell.extensions.user-theme]
+            name='WhiteSur-Dark'
+
             # Set the icon theme
             [org.gnome.desktop.interface]
-            icon-theme='Papirus-Dark'
+            icon-theme='WhiteSur-dark'
+
+            # Set the cursor
+            [org.gnome.desktop.interface]
+            cursor-theme='WhiteSur-cursors'
+
+            # Set gtk theme
+            [org.gnome.desktop.interface]
+            gtk-theme='WhiteSur-Dark'
 
             # Never show the notice on tweak
             [org.gnome.tweaks]
