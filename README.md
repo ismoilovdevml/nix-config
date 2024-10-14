@@ -60,7 +60,7 @@
     pulse.enable = true;
     jack.enable = true;  # Uncomment if needed
   };
-
+  
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -91,6 +91,11 @@
     bash
     neovim
     helix
+    libevdev
+    python312Packages.libevdev
+    i2c-tools
+    microsoft-edge
+    openfortivpn
     python3
     python312Packages.pip
     pipenv
@@ -132,6 +137,7 @@
     whitesur-icon-theme
     whitesur-cursors
     ulauncher
+    beekeeper-studio
     zip
     rhythmbox
     shotwell
